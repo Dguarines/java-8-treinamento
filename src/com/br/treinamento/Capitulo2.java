@@ -30,7 +30,7 @@ public class Capitulo2 {
 		
 		Consumer<Usuario> mostrador2 = (Usuario u) -> {System.out.println(u.getNome());}; // ou  u -> System.out.println(u.getNome());
 		
-		usuarios.forEach(u -> u.tornarModerador());
+		usuarios.forEach(u -> u.tornarModerador());	
 	}
 
 }
