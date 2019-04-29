@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.Function;
 
 import com.br.treinamento.entidades.Usuario;
 
@@ -53,12 +54,15 @@ public class Capitulo5 {
 		
 		palavras.sort(Comparator.naturalOrder()); //reverseOrder()
 		
+		//Conhecendo melhor o Comparator.comparing
+		Function<Usuario, String> extrairNome = u -> u.getNome();
 		
+		Comparator<Usuario> comparadorDeNomes = Comparator.comparing(extrairNome);
 		
+		usuarios.sort(comparadorDeNomes);
 		
-		
-		
-		
+		//Autoboxing nos lambdas
+		usuarios.sort(Comparator.comparingInt(u -> u.getPontos()));
 	}
 
 }
