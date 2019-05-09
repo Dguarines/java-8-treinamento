@@ -27,6 +27,20 @@ public class Capitulo6 {
 		Function<Usuario, String> byName = Usuario::getNome;
 		usuarios.sort(comparing(byName));
 		
+		//Compondo Comparators
+		usuarios.sort(Comparator.comparingInt(u -> u.getPontos()));
+		
+		usuarios.sort(Comparator.comparingInt(Usuario::getPontos));
+		
+		//Em caso de empate, comparar com o nome.
+		Comparator<Usuario> c = Comparator.comparingInt(Usuario::getPontos)
+										  .thenComparing(Usuario::getNome);
+		
+		//Usuários nulos ficam por ultimo.
+		usuarios.sort(Comparator.nullsLast(Comparator.comparing(Usuario::getNome)));
+		
+		//Ordenando por pontos, mas em ordem decrescente.
+		usuarios.sort(Comparator.comparing(Usuario::getPontos).reversed());
 	}
 
 }
